@@ -9,18 +9,9 @@ dotenv.config();
 
 // Create Express app
 const app = express();
-const allowedOrigins = ['https://rx-ease-ai-amsz.vercel.app'];
-
-// Middleware
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true // if you're using cookies/auth headers
+  origin: 'https://rx-ease-ai-amsz.vercel.app', // <-- your Vercel frontend URL
+  credentials: true // if you're using cookies or Authorization headers
 }));
 app.use(express.json());
 
